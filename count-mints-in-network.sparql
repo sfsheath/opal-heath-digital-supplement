@@ -1,0 +1,11 @@
+SELECT DISTINCT (count(distinct ?mint) as ?count) WHERE {
+ {
+ ?hoard a nmo:Hoard ;
+       dcterms:tableOfContents [ nmo:hasMint ?mint ]
+ }
+UNION
+ { ?hoard a nmo:Hoard ;
+    dcterms:tableOfContents [ nmo:hasTypeSeriesItem ?tsi ] .
+  ?tsi nmo:hasMint ?mint .
+ }
+}
