@@ -1,0 +1,4 @@
+SELECT ?identifier WHERE {
+?identifier a <http://nomisma.org/ontology#Mint>
+}
+

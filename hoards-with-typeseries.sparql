@@ -1,0 +1,12 @@
+SELECT * WHERE {
+?id a nmo:Hoard ;
+    dcterms:tableOfContents [ nmo:hasTypeSeriesItem ?o ] .
+}
+This query can be extended to identify all mints in such hoards as follows:
+
+SELECT DISTINCT ?id ?mint WHERE {
+?id a nmo:Hoard ;
+    dcterms:tableOfContents [ nmo:hasTypeSeriesItem ?tsi ] .
+  ?tsi nmo:hasMint ?mint .
+}
+

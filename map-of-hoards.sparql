@@ -1,0 +1,20 @@
+SELECT DISTINCT ?hoard ?mint ?hoardlat ?hoardlong ?mintlat ?mintlong WHERE {
+ {
+ ?hoard a nmo:Hoard ;
+       dcterms:tableOfContents [ nmo:hasMint ?mint ]
+ }
+UNION
+ { ?hoard a nmo:Hoard ;
+    dcterms:tableOfContents [ nmo:hasTypeSeriesItem ?tsi ] .
+  ?tsi nmo:hasMint ?mint .
+ }
+  
+ OPTIONAL { ?hoard nmo:hasFindspot [  
+   geo:lat ?hoardlat ;
+   geo:long ?hoardlong ] }
+  
+ OPTIONAL { ?mint geo:location [
+  geo:lat ?mintlat ; 
+  geo:long ?mintlong ] }
+}
+
